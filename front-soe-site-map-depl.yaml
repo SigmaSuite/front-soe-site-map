@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-soe-site-map
+  labels:
+    app: front-soe-site-map
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-soe-site-map
+  template:
+    metadata:
+      labels:
+        app: front-soe-site-map 
+    spec:
+      containers:
+      - name: front-soe-site-map-container
+        image: senbar/front-soe-site-map:latest
+        ports:
+        - containerPort: 80
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-soe-site-map 
+spec:
+  type: ClusterIP
+  selector:
+    app: front-soe-site-map 
+  ports:
+    - port: 80 
+      targetPort: 80 
+---      
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-soe-site-map
+spec:
+  type: NodePort
+  selector:
+    app: front-soe-site-map
+  ports:
+      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+    - port: 80
+      targetPort: 80
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+      nodePort: 30008
