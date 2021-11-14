@@ -17,3 +17,4 @@
 </a>
   <button (click)="reload()">reload</button>
   Login: {{loginStatus}}
+  <parcel *ngIf="!!spaSite" [config]="spaSite" [mountParcel]="mountParcel"> </parcel>

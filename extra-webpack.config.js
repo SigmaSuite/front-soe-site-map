@@ -2,7 +2,7 @@ const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').defaul
 
 module.exports = (angularWebpackConfig, options) => {
   const singleSpaWebpackConfig = singleSpaAngularWebpack(angularWebpackConfig, options)
-  singleSpaWebpackConfig.externals=["@Sigma/auth"];
+  singleSpaWebpackConfig.externals=["@Sigma/auth", "@Sigma/login"];
 
   // Feel free to modify this webpack config however you'd like to
   return singleSpaWebpackConfig

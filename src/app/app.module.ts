@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ParcelModule } from 'single-spa-angular/parcel';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    ParcelModule,
     BrowserModule,
     AppRoutingModule
   ],
